@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+if [[ -z "$1" ]]
+then
+	echo "tp requires 1 argument."
+else
+	if [[ -e "$HOME/bin/_tp/$1" ]] && [[ -f "$HOME/bin/_tp/$1" ]] && [[ -r "$HOME/bin/_tp/$1" ]]
+	then
+		local tp_loc = $(cat "$HOME/bin/_tp/$1")
+		cd $tp_loc
+	else
+		echo "teleport entry not found: $1"
+	fi
+fi

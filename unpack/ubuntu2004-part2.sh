@@ -19,10 +19,10 @@ read ks_nodeversion
 fnm install $ks_nodeversion
 fnm default $ks_nodeversion
 echo "eval "$(fnm env --use-on-cd)"" >> ~/.zshrc
+ln -s $HOME/.fnm/aliases/default/node /usr/bin/node
 
 # pnpm
 curl -fsSL https://get.pnpm.io/install.sh | sh -
-
 
 # Python
 curl https://pyenv.run | bash
@@ -46,3 +46,7 @@ ufw enable
 apt install postgresql postgresql-contrib
 systemctl start postgresql
 systemctl enable postgresql
+
+# Custom scripts
+mkdir $HOME/bin
+echo "\n\nexport PATH=\$PATH:$HOME/bin" >> $HOME/.zshrc
